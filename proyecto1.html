@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <style>
+    body{
+      margin:0;
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      height:100vh;
+    }
+
+    div{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      height: 70vh;
+      width: 50vh;
+    }
+
+    button{
+      height: 14vw;
+      width: 14vw;
+      background-image: url("bingo.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border: none;
+    }
+
+    h1{
+      font-size: 5rem;
+      color: orange;
+      word-break: keep-all;
+      margin-bottom: 0.2rem;
+    }
+
+    p{
+      font-size: 2rem;
+      word-break: break-all;
+      margin-bottom: 0.2rem;
+    }
+
+    @media screen and (max-width: 600px) {
+        button {height: 22vw; width: 22vw;}
+        div{width:90vw;}
+    }
+  </style>
+</head>
+
+<body>
+<button type="button" onclick="funci()"></button>
+<div>
+  <h1 id ="num">_</h1>
+  <p id ="ordenados">_</p>
+</div>
+<script>
+   let ar = [];
+   for (let a=1; a<=90; a++){
+       ar.push(a);
+   }
+   let j;
+   let premio;
+   let acumulados0rd = [];
+
+   function funci(){
+       do{
+       j = Math.floor(Math.random() * ar.length);
+       premio = ar[j];
+       ar.splice(j,1);
+       acumulados0rd.push(premio);
+       acumulados0rd.sort(function (a,b){return a-b});
+       document.getElementById("num").innerHTML = premio;
+       document.getElementById("ordenados").innerHTML = " " + acumulados0rd;
+       } while (premio == undefined && ar.length > 0);
+       if (ar.length == 0){
+       document.getElementById("num").innerHTML = "El " + premio + " es el último premio.";
+       }
+   }
+</script>
+
+</body>
+</html>
